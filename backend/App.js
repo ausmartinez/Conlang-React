@@ -1,7 +1,7 @@
-const Express = require("express");
-const BodyParser = require("body-parser");
-const MongoClient = require("mongodb").MongoClient;
-const ObjectId = require("mongodb").ObjectID;
+const Express = require('express');
+const BodyParser = require('body-parser');
+const MongoClient = require('mongodb').MongoClient;
+const ObjectId = require('mongodb').ObjectID;
 
 var app = Express();
 
@@ -10,7 +10,8 @@ app.use(BodyParser.urlencoded({ extended: true }));
 app.use(BodyParser.json());
 
 // Routes
-app.use('/waffles', require('./routes/test'));
+app.use('/mostRecent', require('./routes/mostRecent'));
+//app.use('/waffles', require('./routes/test'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -33,4 +34,4 @@ module.exports = app;
 
 const port = 4000;
 app.listen(port, () => {});
-console.log("App running on port " + port + "...")
+console.log('App running on port ' + port + '...');
