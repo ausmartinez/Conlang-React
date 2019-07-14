@@ -9,7 +9,7 @@ class App extends React.Component {
     this.state = {
       name: null
     }
-    fetch("http://localhost:4000/")
+    fetch("http://localhost:4000/mostRecent")
           .then(res => res.json())
           .then(
             (result) => {

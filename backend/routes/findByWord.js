@@ -6,8 +6,8 @@ const cors = require('cors');
 
 const router = express.Router();
 
-router.get('/', cors(corsOptions), function(req, res, next) {
-// router.get('/', function(req, res, next) {
+router.get('/:word', cors(corsOptions), function(req, res, next) {
+// router.get('/:word', function(req, res, next) {
   const CONNECTION_URL = secretRoute;
   const DATABASE_NAME = 'drevtam';
   MongoClient.connect(CONNECTION_URL, { useNewUrlParser: true }, (error, client) => {
@@ -16,8 +16,7 @@ router.get('/', cors(corsOptions), function(req, res, next) {
     }
     database = client.db(DATABASE_NAME);
     collection = database.collection('dictionary');
-    // { "_id": new ObjectId(request.params.id) }
-    collection.find().sort({timeUpdated: -1}).limit(10).toArray((error, result) => {
+    collection.find({word:req.params['word']}).toArray((error, result) => {
       if(error) {
         throw error;
       }
