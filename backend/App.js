@@ -16,6 +16,8 @@ app.use('/mostRecent', require('./routes/mostRecent'));
 app.use('/findByWord', require('./routes/findByWord'));
 // localhost:4000/findByDef/:definition
 app.use('/findByDef', require('./routes/findByDef'));
+// localhost:4000/addWord/:word&:def&:type&:slang&:origin
+app.use('/addWord', require('./routes/addWord'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
